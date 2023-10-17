@@ -4,14 +4,31 @@ dolt-nix-flake
 A nix flake with a derivation for a build of github.com/dolthub/dolt.
 
 This repository includes a small go program which is intended to update the
-flake for a given commit of the dolthub/dolt repository. For now, you run it like:
+flake. By default, it updates the flake lockfile and the vendorHash for the tip
+of dolt/main. To do so, just run:
 
 ```
-go run . b6a077ceb9d7999d6af42e974b1b68b4a9cae38b
+go run .
 ```
 
-and it outputs on standard out the contents of a nix flake for building dolt at
-that commit.
+and checkin the result.
 
-CI machinery periodically updates dolt-nix-flake with new flake.nix contents
-reflecting more recent dolt development.
+You can also update the flake to be for a given dolt release. To do so, run
+something like:
+
+```
+go run . --revision '?ref=tags/v1.20.0'
+```
+
+The result should be pushed to release tag corresponding to the given dolt
+release:
+
+```
+git add .
+git commit -m 'Release v1.20.0'
+git tag v1.20.0
+git push origin v1.20.0
+```
+
+We hope to soon add CI machinery to update dolt-nix-flake with the new
+flake.nix contents when dolt/main changes and when dolt publishes releases.

@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "dolt": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1697525937,
+        "narHash": "sha256-X8wOP7xrKka4bUH+ZltYZM1JaC0ZhOuRzRqz6hKrgZ4=",
+        "owner": "dolthub",
+        "repo": "dolt",
+        "rev": "e3fd68c6501cceeb6b3b47c4b9fcaec41d5c54b7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dolthub",
+        "repo": "dolt",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -34,6 +50,7 @@
     },
     "root": {
       "inputs": {
+        "dolt": "dolt",
         "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs"
       }

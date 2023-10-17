@@ -4,9 +4,11 @@
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
+    dolt.url = "github:dolthub/dolt{{.DoltRevision}}";
+    dolt.flake = false;
   };
 
-  outputs = { self, flake-utils, nixpkgs }: flake-utils.lib.eachDefaultSystem (system:
+  outputs = { self, dolt, flake-utils, nixpkgs }: flake-utils.lib.eachDefaultSystem (system:
     let
       pkgs = nixpkgs.legacyPackages.${system};
       lib = nixpkgs.lib;
@@ -18,13 +20,7 @@
         /* Based on https://github.com/NixOS/nixpkgs/blob/master/pkgs/servers/sql/dolt/default.nix */
         pname = "dolt";
 
-        src = pkgs.fetchFromGitHub {
-          owner = "dolthub";
-          repo = "dolt";
-          rev = "{{.Revision}}";
-          sha256 = "sha256-{{.SourceHash}}";
-        };
-
+        src = dolt;
         modRoot = "./go";
         subPackages = [ "cmd/dolt" ];
         vendorHash = "sha256-{{.DepsHash}}";
