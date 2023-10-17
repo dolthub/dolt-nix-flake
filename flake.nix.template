@@ -1,0 +1,42 @@
+{{.Warning}}
+{
+  description = "Relational database with version control and CLI a-la Git";
+
+  inputs = {
+    flake-utils.url = "github:numtide/flake-utils";
+  };
+
+  outputs = { self, flake-utils, nixpkgs }: flake-utils.lib.eachDefaultSystem (system:
+    let
+      pkgs = nixpkgs.legacyPackages.${system};
+      lib = nixpkgs.lib;
+    in
+    {
+      packages.default = pkgs.buildGoModule {
+        name = "dolt";
+
+        /* Based on https://github.com/NixOS/nixpkgs/blob/master/pkgs/servers/sql/dolt/default.nix */
+        pname = "dolt";
+
+        src = pkgs.fetchFromGitHub {
+          owner = "dolthub";
+          repo = "dolt";
+          rev = "{{.Revision}}";
+          sha256 = "sha256-{{.SourceHash}}";
+        };
+
+        modRoot = "./go";
+        subPackages = [ "cmd/dolt" ];
+        vendorHash = "sha256-{{.DepsHash}}";
+        proxyVendor = true;
+        doCheck = false;
+
+        meta = with lib; {
+          description = "Relational database with version control and CLI a-la Git";
+          homepage = "https://github.com/dolthub/dolt";
+          license = licenses.asl20;
+          maintainers = with maintainers; [ danbst ];
+        };
+      };
+    });
+}
