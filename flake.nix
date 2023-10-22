@@ -14,6 +14,15 @@
       lib = nixpkgs.lib;
     in
     {
+      packages.dolt-nix-flake = pkgs.buildGoModule {
+        name = "dolt-nix-flake";
+        pname = "dolt-nix-flake";
+
+        src = ./.;
+        modRoot = ".";
+        vendorHash = null;
+      };
+
       packages.default = pkgs.buildGoModule {
         name = "dolt";
 
@@ -23,7 +32,7 @@
         src = dolt;
         modRoot = "./go";
         subPackages = [ "cmd/dolt" ];
-        vendorHash = "sha256-jrHrv08mwjq4a8gDlrhUe+A7qMFzcdhW/cZFQPcAQ94=";
+        vendorHash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
         proxyVendor = true;
         doCheck = false;
 

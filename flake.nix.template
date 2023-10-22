@@ -14,6 +14,15 @@
       lib = nixpkgs.lib;
     in
     {
+      packages.dolt-nix-flake = pkgs.buildGoModule {
+        name = "dolt-nix-flake";
+        pname = "dolt-nix-flake";
+
+        src = ./.;
+        modRoot = ".";
+        vendorHash = null;
+      };
+
       packages.default = pkgs.buildGoModule {
         name = "dolt";
 
