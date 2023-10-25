@@ -118,7 +118,7 @@ func main() {
 
 	nixprog, err := exec.LookPath("nix")
 	if err != nil {
-		panic(fmt.Errorf("did not find required executable, nix-hash, in PATH: %v", err))
+		panic(fmt.Errorf("did not find required executable, nix, in PATH: %v", err))
 	}
 
 	err = WriteFlake(*RevisionSegment, FakeNarHash)
@@ -217,9 +217,9 @@ func NixHashDir(prog, dir string) (string, error) {
 
 func NixFlakeUpdate(prog string) error {
 	cmd := exec.Command(prog, "flake", "update")
-	err := cmd.Run()
+	out, err := cmd.CombinedOutput()
 	if err != nil {
-		return fmt.Errorf("could not run `nix flake update`: %w", err)
+		return fmt.Errorf("could not run `nix flake update`: %w\n\n%s", err, string(out))
 	}
 	return nil
 }

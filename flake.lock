@@ -3,11 +3,11 @@
     "dolt": {
       "flake": false,
       "locked": {
-        "lastModified": 1697874886,
-        "narHash": "sha256-EU/JBi3sAmNeo4bCndgcP2evDKzMroLiZtAPdqz5Xio=",
+        "lastModified": 1698187230,
+        "narHash": "sha256-pa9xsbO/d5/3wCx2XKn4dzlqPlO3Ie/cGJiwfWTEUKc=",
         "owner": "dolthub",
         "repo": "dolt",
-        "rev": "41a47d9b8e102423aa4fc7a26075813d464d8b7a",
+        "rev": "17937a905af10022c9efa1273c61f334bdb416b7",
         "type": "github"
       },
       "original": {
@@ -36,11 +36,12 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1685620773,
-        "narHash": "sha256-iQ+LmporQNdLz8uMJdP62TaAWeLUwl43/MYUBtWqulM=",
-        "path": "/nix/store/ipbqg8zvymxjlw96pl2mvgpigzc3wm7p-source",
-        "rev": "f0ba8235153dd2e25cf06cbf70d43efdd4443592",
-        "type": "path"
+        "lastModified": 1697915759,
+        "narHash": "sha256-WyMj5jGcecD+KC8gEs+wFth1J1wjisZf8kVZH13f1Zo=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "51d906d2341c9e866e48c2efcaac0f2d70bfd43e",
+        "type": "github"
       },
       "original": {
         "id": "nixpkgs",
