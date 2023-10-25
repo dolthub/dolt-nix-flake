@@ -8,7 +8,7 @@ flake. By default, it updates the flake lockfile and the vendorHash for the tip
 of dolt/main. To do so, just run:
 
 ```
-go run .
+nix develop -i -c 'dolt-nix-flake'
 ```
 
 and checkin the result.
@@ -17,7 +17,7 @@ You can also update the flake to be for a given dolt release. To do so, run
 something like:
 
 ```
-go run . --revision '?ref=tags/v1.20.0'
+nix develop -i -c dolt-nix-flake --revision '?ref=tags/v1.20.0'
 ```
 
 The result should be pushed to release tag corresponding to the given dolt

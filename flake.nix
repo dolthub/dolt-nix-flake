@@ -14,6 +14,16 @@
       lib = nixpkgs.lib;
     in
     {
+      devShells.default = pkgs.mkShell {
+        buildInputs = [
+          self.packages.${system}.dolt-nix-flake
+          pkgs.nix
+          pkgs.unzip
+          pkgs.go
+          pkgs.git
+        ];
+      };
+
       packages.dolt-nix-flake = pkgs.buildGoModule {
         name = "dolt-nix-flake";
         pname = "dolt-nix-flake";
@@ -32,7 +42,7 @@
         src = dolt;
         modRoot = "./go";
         subPackages = [ "cmd/dolt" ];
-        vendorHash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+        vendorHash = "sha256-1Cy0PmDmMPpPZ2PLDP6sywb39MuExv2yabqSeP3Of9M=";
         proxyVendor = true;
         doCheck = false;
 
