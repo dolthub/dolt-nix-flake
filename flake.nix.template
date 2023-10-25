@@ -14,6 +14,25 @@
       lib = nixpkgs.lib;
     in
     {
+      devShells.default = pkgs.mkShell {
+        buildInputs = [
+          self.packages.${system}.dolt-nix-flake
+          pkgs.nix
+          pkgs.unzip
+          pkgs.go
+          pkgs.git
+        ];
+      };
+
+      packages.dolt-nix-flake = pkgs.buildGoModule {
+        name = "dolt-nix-flake";
+        pname = "dolt-nix-flake";
+
+        src = ./.;
+        modRoot = ".";
+        vendorHash = null;
+      };
+
       packages.default = pkgs.buildGoModule {
         name = "dolt";
 
