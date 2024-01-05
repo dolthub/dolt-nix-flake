@@ -42,7 +42,7 @@
         src = dolt;
         modRoot = "./go";
         subPackages = [ "cmd/dolt" ];
-        vendorHash = "sha256-1Cy0PmDmMPpPZ2PLDP6sywb39MuExv2yabqSeP3Of9M=";
+        vendorHash = "sha256-G/PoxcLLLe29+sv0TW1Ja6EtYE6ddsPCw44tzA5Rf3E=";
         proxyVendor = true;
         doCheck = false;
 
